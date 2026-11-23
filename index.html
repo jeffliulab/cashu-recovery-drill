@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Cashu Recovery Drill</title>
+<link rel="stylesheet" href="./drill.css">
+<script defer src="./engine.js"></script>
+<script defer src="./drill.js"></script>
+</head>
+<body>
+<header><div class="page"><p class="format">Cashu · Wallet recovery</p><h1>Recovery drill</h1><p class="intro">Your phone is gone. What can your wallet recover?</p><p class="scope">Three offline exercises with fictional mint records. No wallet or seed phrase needed.</p></div></header>
+<main class="page">
+<nav aria-label="Recovery exercises" id="cases"></nav>
+<section class="workspace" aria-labelledby="case-title">
+<div class="case-panel"><span id="case-num" class="eyebrow"></span><h2 id="case-title" tabindex="-1"></h2><p id="brief"></p>
+<fieldset id="scope" hidden><legend>Keysets to check</legend><label><input type="checkbox" id="old"> Include the retired keyset</label></fieldset>
+<div class="actions"><button id="restore">Restore signatures</button><button id="check" disabled>Check proof states</button></div>
+<p id="status" class="status" role="status"></p></div>
+<div class="record-panel"><h3>Mint record</h3><p id="mint-label" class="mint-label"></p>
+<table><caption class="visually-hidden">Simulated wallet recovery evidence</caption><thead><tr><th scope="col">Candidate</th><th scope="col">Face value</th><th scope="col">Evidence</th></tr></thead><tbody id="rows"></tbody></table>
+<p class="record-note" id="record-note"></p></div></section>
+<section id="decision" aria-labelledby="question" hidden><h2 id="question"></h2><div id="answers" role="group" aria-labelledby="question"></div><p id="feedback" role="status"></p><button id="next" hidden>Next exercise</button></section>
+<section id="finish" hidden><h2 tabindex="-1" id="finish-title">Drill complete</h2><p>A wallet needs a matching signature and a spendable proof state. It must also search the right keysets. A seed can only reproduce material the wallet derived from it.</p><button id="again">Start again</button></section>
+<details><summary>How this maps to Cashu</summary><p>A <strong>mint</strong> signs ecash. A <strong>keyset</strong> identifies one set of its issuance keys. In a compatible wallet, NUT-13 derives candidates for each keyset from the wallet’s seed and a counter. NUT-09 returns matching blind signatures. The wallet reconstructs the proofs and uses NUT-07 to check their state.</p><p>The examples assume ordinary sat proofs and a reachable, cooperating mint. Values shown are face values before any swap or payment fees. Real recovery includes cryptographic validation, the correct mint and derivation scheme, and a wider counter search. The drill performs none of those live operations.</p><p><a href="https://github.com/cashubtc/nuts/blob/main/13.md">NUT-13 · Deterministic secrets</a> · <a href="https://github.com/cashubtc/nuts/blob/main/09.md">NUT-09 · Restore signatures</a> · <a href="https://github.com/cashubtc/nuts/blob/main/07.md">NUT-07 · Proof states</a></p></details>
+</main>
+</body></html>
